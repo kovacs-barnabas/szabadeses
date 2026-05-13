@@ -6,9 +6,34 @@ export default function Kiszámítás() {
       <h1 className="text-4xl font-bold mb-6">
         Fizikai Képletek
       </h1>
+      <p className="text-xl rounded-xl px-4 py-2 transition-colors">A nehézségi gyorsulás jele g, iránya függőleges, azaz megközelítőleg a Föld középpontja felé mutat. (Az egyenes vonalú mozgásoknál megszokott módon a g helyett az a jelölést is használhatjuk.)  </p>
 
-      <p className="text-xl hover:bg-blue-700 rounded-xl px-4 py-2 transition-colors">s = 1/2 * g * t<sup>2</sup></p>
-      <p className="text-xl hover:bg-blue-700 rounded-xl px-4 py-2 transition-colors">v = g * t</p>
+      <div className="flex gap-6 flex-wrap justify-center">
+
+
+      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-80">
+  
+      <h2 className="text-2xl font-bold mb-3">
+         Út képlete
+      </h2>
+
+       <p className="text-xl text-blue-400 text-center">
+          s = 1/2 * g * t²
+       </p>
+
+      </div>
+        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-80">
+  
+          <h2 className="text-2xl font-bold mb-3">
+               Sebesség képlete
+          </h2>
+
+          <p className="text-xl text-blue-400 text-center">
+                 v = g * t
+         </p>
+
+      </div>
+      </div>
 
     </main>
     )
