@@ -1,5 +1,7 @@
 "use client"
 import { useMemo, useState } from "react";
+import Link from "next/link";
+import Navbar from "../../components/Navbar";
 
 export default function PlanetGravityPage() {
  const planets = [
@@ -38,7 +40,11 @@ export default function PlanetGravityPage() {
         };
       }, [út, selectedPlanet]);
 
-      return (<main className="min-h-screen bg-slate-900 text-white p-6">
+      return (
+      <>
+            <Navbar />
+      
+      <main className="min-h-screen bg-slate-900 text-white  pt-28">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-5xl font-bold text-center mb-4">
               Szabadesés Kalkulátor
@@ -70,8 +76,54 @@ export default function PlanetGravityPage() {
 
             <div className="bg-slate-800 rounded-2xl p-6 mb-8 shadow-lg">
               <h2 className="text-2xl font-bold mb-5">Magasság</h2>
+                <input
+                type="number"
+                value={út}
+                onChange={(e) => setút(Number(e.target.value))}
+                className="w-full p-4 rounded-xl bg-slate-700 text-white text-xl outline-none"
+                placeholder="Írd be a magasságot"
+              />
+            </div>
 
-              
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-slate-800 rounded-2xl p-6 text-center shadow-lg">
+                <h3 className="text-xl font-bold mb-3">Idő</h3>
+                <p className="text-4xl font-bold text-blue-400">
+                  {számolások.idő}
+                </p>
+                <span className="text-gray-400">másodperc</span>
+              </div>
+
+              <div className="bg-slate-800 rounded-2xl p-6 text-center shadow-lg">
+                <h3 className="text-xl font-bold mb-3">Sebesség</h3>
+                <p className="text-4xl font-bold text-green-400">
+                  {számolások.sebesség}
+                </p>
+                <span className="text-gray-400">m/s</span>
+              </div>
+
+              <div className="bg-slate-800 rounded-2xl p-6 text-center shadow-lg">
+                <h3 className="text-xl font-bold mb-3">Út</h3>
+                <p className="text-4xl font-bold text-yellow-400">
+                  {számolások.út}
+                </p>
+                <span className="text-gray-400">méter</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-800 rounded-2xl p-6 mt-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-4">Képletek</h2>
+
+              <div className="space-y-3 text-lg text-gray-300">
+                <p>s = 1/2 x g x <sup>t</sup></p>
+                <p>v = g x t</p>
+                <p>t = Gyökalatt(2s / g)</p>
+              </div>
+            </div>
+          </div>
+        </main>
+        
+        </>      
         
       )
     }

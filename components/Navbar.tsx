@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 
 export default function Navbar() {
@@ -16,10 +17,10 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/bolygok"
+            href="/"
             className="hover:text-amber-300 transition text-gray-400 font-semibold"
           >
-            Bolygók
+            Főoldal
           </Link>
 
           <Link
