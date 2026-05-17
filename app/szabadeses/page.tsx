@@ -38,8 +38,40 @@ export default function PlanetGravityPage() {
         };
       }, [út, selectedPlanet]);
 
-      return (
-        
+      return (<main className="min-h-screen bg-slate-900 text-white p-6">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-5xl font-bold text-center mb-4">
+              Szabadesés Kalkulátor
+            </h1>
+
+            <p className="text-center text-gray-300 mb-10 text-lg">
+              Számold ki a szabadesés idejét, sebességét és útját különböző bolygókon.
+            </p>
+
+            <div className="bg-slate-800 rounded-2xl p-6 mb-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-5">Bolygó választás</h2>
+
+              <div className="flex gap-4 flex-wrap">
+                {planets.map((planet) => (
+                  <button
+                    key={planet.name}
+                    onClick={() => setSelectedPlanet(planet)}
+                    className={`px-6 py-4 rounded-xl font-bold transition ${
+                      selectedPlanet.name === planet.name
+                        ? "bg-blue-500"
+                        : "bg-slate-700 hover:bg-slate-600"
+                    }`}
+                  >
+                    {planet.emoji} {planet.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-slate-800 rounded-2xl p-6 mb-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-5">Magasság</h2>
+
+              
         
       )
     }
