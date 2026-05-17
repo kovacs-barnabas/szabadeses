@@ -7,7 +7,7 @@ export default function Kiszámítás() {
     <>
           <Navbar />
 
-    <main className="p-10 min-h-screen bg-black text-white flex flex-col items-center justify-start gap-4 pt-28">
+    <main className="p-10 min-h-screen bg-black text-white flex flex-col items-center justify-start gap-3 pt-28">
       <h1 className="text-4xl font-bold mb-6">
         Fizikai Képletek
       </h1>
@@ -35,6 +35,17 @@ export default function Kiszámítás() {
 
           <p className="text-xl text-blue-400 text-center">
                  v = g * t
+         </p>
+            
+      </div>
+      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-80">
+  
+          <h2 className="text-2xl font-bold mb-3">
+               Idő képlete
+          </h2>
+
+          <p className="text-xl text-blue-400 text-center">
+                 t = Gyökalatt(2s / g)
          </p>
             
       </div>
