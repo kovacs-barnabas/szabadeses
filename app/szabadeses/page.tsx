@@ -31,20 +31,21 @@ export default function PlanetGravityPage() {
       emoji: "🟠",
     },
     {
-      name: "Merkúr",
-      gravity: 3.7,
-      emoji: "🌑",
-    },
-    {
       name: "Uránusz",
       gravity: 8.69,
       emoji: "🔵",
     },
     {
-      name: "Neptunusz",
+      name : "Neptunusz",
       gravity: 11.15,
       emoji: "🔵",
     },
+    {
+      name: "Merkúr",
+      gravity: 3.7,
+      emoji: "🌑",
+    },
+    
 
   ];
       const [selectedPlanet, setSelectedPlanet] = useState(planets[0]);
