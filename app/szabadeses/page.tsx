@@ -9,20 +9,43 @@ export default function PlanetGravityPage() {
       name: "Föld",
       gravity: 9.81,
       emoji: "🌍",
-      color: "from-blue-500 to-cyan-700",
     },
     {
       name: "Mars",
       gravity: 3.71,
       emoji: "🔴",
-      color: "from-red-500 to-orange-700",
     },
     {
       name: "Jupiter",
       gravity: 24.79,
-      emoji: "🪐",
-      color: "from-yellow-500 to-amber-800",
+      emoji: "🌕",
     },
+    {
+      name: "Szaturnusz",
+      gravity: 10.44,
+      emoji: "🪐",
+    },
+    {
+      name: "Vénusz",
+      gravity: 8.87,
+      emoji: "🟠",
+    },
+    {
+      name: "Merkúr",
+      gravity: 3.7,
+      emoji: "🌑",
+    },
+    {
+      name: "Uránusz",
+      gravity: 8.69,
+      emoji: "🔵",
+    },
+    {
+      name: "Neptunusz",
+      gravity: 11.15,
+      emoji: "🔵",
+    },
+
   ];
       const [selectedPlanet, setSelectedPlanet] = useState(planets[0]);
       const [út, setút] = useState(100);
@@ -62,16 +85,17 @@ export default function PlanetGravityPage() {
                   <button
                     key={planet.name}
                     onClick={() => setSelectedPlanet(planet)}
-                    className={`px-6 py-4 rounded-xl font-bold transition ${
+                    className={`px-6 py-4 rounded-xl font-bold transition  ${
                       selectedPlanet.name === planet.name
                         ? "bg-blue-500"
                         : "bg-slate-700 hover:bg-slate-600"
                     }`}
                   >
-                    {planet.emoji} {planet.name}
+                    {planet.emoji} {planet.name} 
                   </button>
                 ))}
               </div>
+              <div className="text-center " > {selectedPlanet.gravity.toFixed(2)} m/s²</div>
             </div>
 
             <div className="bg-slate-800 rounded-2xl p-6 mb-8 shadow-lg">
