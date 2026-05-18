@@ -142,7 +142,7 @@ export default function PlanetGravityPage() {
               <div className="space-y-3 text-lg text-gray-300">
                 <p>s = 1/2 x g x <sup>t</sup></p>
                 <p>v = g x t</p>
-                <p>t = Gyökalatt(2s / g)</p>
+                <p>t = √(2s / g)</p>
               </div>
             </div>
           </div>
