@@ -1,5 +1,5 @@
 "use client"
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 
@@ -16,12 +16,38 @@ export default function PlanetGravityPage() {
   ];
 
   const [selectedPlanet, setSelectedPlanet] = useState(planets[0]);
-  // 1. VÁLTOZTATÁS: Engedjük meg a string típust is (hogy lehessen üres "" a mező)
   const [út, setút] = useState<number | "">(100);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Görgetés kezelése: változtatja az értéket, de nem mozdítja el a weboldalt
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (document.activeElement === inputRef.current) {
+        e.preventDefault(); // Megakadályozza az oldal görgetését
+        
+        const irany = e.deltaY < 0 ? 1 : -1;
+        setút((prev) => {
+          if (prev === "") return irany > 0 ? 1 : 0;
+          const ujErtek = prev + irany;
+          return ujErtek < 0 ? 0 : ujErtek; // Ne engedjük 0 alá menni
+        });
+      }
+    };
+
+    const inputEl = inputRef.current;
+    if (inputEl) {
+      inputEl.addEventListener("wheel", handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (inputEl) {
+        inputEl.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, []);
 
   const számolások = useMemo(() => {
     const g = selectedPlanet.gravity;
-    // Ha a mező üres "", akkor 0 méterrel számolunk, hogy ne kapjunk NaN értéket
     const aktualisUt = út === "" ? 0 : út;
 
     const idő = Math.sqrt((2 * aktualisUt) / g);
@@ -76,15 +102,13 @@ export default function PlanetGravityPage() {
           <div className="bg-slate-800 rounded-2xl p-6 mb-8 shadow-lg">
             <h2 className="text-2xl font-bold mb-5">Magasság</h2>
             <input
+              ref={inputRef}
               type="number"
               value={út}
-              // 2. VÁLTOZTATÁS: Ha üresre törlik, akkor üres stringet mentünk, különben számmá alakítjuk
               onChange={(e) => {
                 const val = e.target.value;
                 setút(val === "" ? "" : Number(val));
               }}
-              // 3. VÁLTOZTATÁS: Megakadályozzuk, hogy a görgő elvigye az oldalt vagy módosítsa a számot
-              onWheel={(e) => e.currentTarget.blur()}
               className="w-full p-4 rounded-xl bg-slate-700 text-white text-xl outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               placeholder="Írd be a magasságot"
             />
